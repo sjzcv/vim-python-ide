@@ -1,22 +1,10 @@
 =============
-PYTHON .VIMRC
+Vim Python IDE
 =============
 
-VIM Configuration for Python / Cython / C Development.
+VIM Configuration for Python Development.
 
-Keep calm and use VIM!
-
-Requirements
-------------
-
-- VIM 7.4
-- git
-- bash 3.2+
-
-How does it look?
------------------
-
-.. image:: https://github.com/ets-labs/python-vimrc/wiki/img/screenshot.png
+.. image:: https://i.imgur.com/N7XmIoA.png
 
 Installation
 ------------
