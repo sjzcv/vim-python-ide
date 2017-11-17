@@ -1,59 +1,68 @@
-"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
-"                                                                              "
-"                       __   _ _ _ __ ___  _ __ ___                            "
-"                       \ \ / / | '_ ` _ \| '__/ __|                           "
-"                        \ V /| | | | | | | | | (__                            "
-"                         \_/ |_|_| |_| |_|_|  \___|                           "
-"                                                                              "
-"                                                                              "
-"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+set nocompatible              " required
+filetype off                  " required
+set hidden
+set showtabline=0
 
-let $vimhome=fnamemodify(resolve(expand("~/.vimrc")), ':p:h')
-let $vundle=$vimhome."/bundle/Vundle.vim"
-
-" Be iMproved
-set nocompatible
-
-"=====================================================
-"" Vundle settings
-"=====================================================
-filetype off
-set rtp+=$vundle
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-    Plugin 'VundleVim/Vundle.vim'               " let Vundle manage Vundle, required
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
 
-    "-------------------=== Code/Project navigation ===-------------
-    Plugin 'scrooloose/nerdtree'                " Project and file navigation
-    Plugin 'majutsushi/tagbar'                  " Class/module browser
-    Plugin 'kien/ctrlp.vim'                     " Fast transitions on project files
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
 
-    "-------------------=== Other ===-------------------------------
-    Plugin 'bling/vim-airline'                  " Lean & mean status/tabline for vim
-    Plugin 'vim-airline/vim-airline-themes'     " Themes for airline
-    Plugin 'Lokaltog/powerline'                 " Powerline fonts plugin
-    Plugin 'fisadev/FixedTaskList.vim'          " Pending tasks list
-    Plugin 'rosenfeld/conque-term'              " Consoles as buffers
-    Plugin 'tpope/vim-surround'                 " Parentheses, brackets, quotes, XML tags, and more
-    Plugin 'flazz/vim-colorschemes'             " Colorschemes
+" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
+"-------------------=== Code/Project navigation ===-------------
+Plugin 'scrooloose/nerdtree'                " Project and file navigation
+Plugin 'Xuyuanp/nerdtree-git-plugin'        " NerdTree git functionality
+Plugin 'majutsushi/tagbar'                  " Class/module browser
+Plugin 'vim-ctrlspace/vim-ctrlspace'
+Plugin 'mileszs/ack.vim'
+Plugin 'vim-airline/vim-airline'            " Lean & mean status/tabline for vim
+Plugin 'vim-airline/vim-airline-themes'     " Themes for airline
+Plugin 'Lokaltog/powerline'                 " Powerline fonts plugin
+Plugin 'fisadev/FixedTaskList.vim'          " Pending tasks list
+Plugin 'rosenfeld/conque-term'              " Consoles as buffers
+Plugin 'yuttie/comfortable-motion.vim'      " Smooth scrolling
+Plugin 'MattesGroeger/vim-bookmarks'        " Bookmarks
+Plugin 'thaerkh/vim-indentguides'           " Visual representation of indents
 
-    "-------------------=== Snippets support ===--------------------
-    Plugin 'garbas/vim-snipmate'                " Snippets manager
-    Plugin 'MarcWeber/vim-addon-mw-utils'       " dependencies #1
-    Plugin 'tomtom/tlib_vim'                    " dependencies #2
-    Plugin 'honza/vim-snippets'                 " snippets repo
+"-------------------=== Other ===-------------------------------
+Plugin 'tpope/vim-surround'                 " Parentheses, brackets, quotes, XML tags, and more
+Plugin 'flazz/vim-colorschemes'             " Colorschemes
+Plugin 'vimwiki/vimwiki'                    " Personal Wiki
+Plugin 'jreybert/vimagit'
+Plugin 'edkolev/tmuxline.vim'
+Plugin 'kien/rainbow_parentheses.vim'       " Rainbow Parentheses
+Plugin 'chriskempson/base16-vim'            " Base 16 colors
+Plugin 'ryanoasis/vim-devicons'             " Dev Icons
 
-    "-------------------=== Languages support ===-------------------
-    Plugin 'tpope/vim-commentary'               " Comment stuff out
-    Plugin 'mitsuhiko/vim-sparkup'              " Sparkup(XML/jinja/htlm-django/etc.) support
-    Plugin 'Rykka/riv.vim'                      " ReStructuredText plugin
-    Plugin 'Valloric/YouCompleteMe'             " Autocomplete plugin
+"-------------------=== Snippets support ===--------------------
+Plugin 'garbas/vim-snipmate'                " Snippets manager
+Plugin 'MarcWeber/vim-addon-mw-utils'       " dependencies #1
+Plugin 'tomtom/tlib_vim'                    " dependencies #2
+Plugin 'honza/vim-snippets'                 " snippets repo
 
-    "-------------------=== Python  ===-----------------------------
-    Plugin 'klen/python-mode'                   " Python mode (docs, refactor, lints...)
-    Plugin 'scrooloose/syntastic'               " Syntax checking plugin for Vim
+"-------------------=== Languages support ===-------------------
+Plugin 'tpope/vim-commentary'               " Comment stuff out
+Plugin 'scrooloose/nerdcommenter'           " Easy code documentation
+Plugin 'mitsuhiko/vim-sparkup'              " Sparkup(XML/jinja/htlm-django/etc.) support
+Plugin 'Rykka/riv.vim'                      " ReStructuredText plugin
+Plugin 'Valloric/YouCompleteMe'             " Autocomplete plugin
+Plugin 'w0rp/ale'
 
-call vundle#end()                           " required
+"-------------------=== Python  ===-----------------------------
+Plugin 'klen/python-mode'                   " Python mode (docs, refactor, lints...)
+Plugin 'scrooloose/syntastic'               " Syntax checking plugin for Vim
+Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'mitsuhiko/vim-python-combined'
+Plugin 'mitsuhiko/vim-jinja'
+Plugin 'jmcantrell/vim-virtualenv'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
 filetype on
 filetype plugin on
 filetype plugin indent on
@@ -61,11 +70,19 @@ filetype plugin indent on
 "=====================================================
 "" General settings
 "=====================================================
-syntax enable                               " syntax highlight
+if filereadable(expand("~/.vimrc_background"))
+  source ~/.vimrc_background
+endif
+set encoding=utf-8
+let base16colorspace=256
+set t_Co=256                                " 256 colors
+set guifont=mononoki\ Nerd\ Font\ 18
+colorscheme base16-default-dark             " set vim colorscheme
+let g:airline_theme='base16_spacemacs'             " set airline theme
+syntax enable                               " enable syntax highlighting
 
-set t_Co=256                                " set 256 colors
-colorscheme wombat256mod                    " set color scheme
 
+set shell=/bin/bash
 set number                                  " show line numbers
 set ruler
 set ttyfast                                 " terminal acceleration
@@ -87,16 +104,12 @@ set noswapfile 	                            " no swap files
 
 set backspace=indent,eol,start              " backspace removes all (indents, EOLs, start) What is start?
 
-set scrolloff=10                            " let 10 lines before/after cursor during scroll
+set scrolloff=20                            " let 10 lines before/after cursor during scroll
 
 set clipboard=unnamed                       " use system clipboard
 
 set exrc                                    " enable usage of additional .vimrc files from working directory
 set secure                                  " prohibit .vimrc files to execute shell, create files, etc...
-
-" Additional mappings for Esc (useful for MacBook with touch bar)
-inoremap jj <Esc>
-inoremap jk <Esc>
 
 "=====================================================
 "" Tabs / Buffers settings
@@ -108,15 +121,38 @@ nmap <F9> :bprev<CR>
 nmap <F10> :bnext<CR>
 nmap <silent> <leader>q :SyntasticCheck # <CR> :bp <BAR> bd #<CR>
 
+"=====================================================
+"" Workspace Settings 
+"=====================================================
+nnoremap <Fc> :ToggleWorkspace<CR>
+let g:workspace_autosave_always = 1
+
+"=====================================================
+"" Relative Numbering 
+"=====================================================
+nnoremap <F4> :set relativenumber!<CR>
+
+"=====================================================
 "" Search settings
 "=====================================================
 set incsearch	                            " incremental search
 set hlsearch	                            " highlight search results
 
 "=====================================================
+"" Comfortable Motion Settings
+"=====================================================
+let g:comfortable_motion_scroll_down_key = "j"
+let g:comfortable_motion_scroll_up_key = "k"
+let g:comfortable_motion_no_default_key_mappings = 1
+let g:comfortable_motion_impulse_multiplier = 25  " Feel free to increase/decrease this value.
+nnoremap <silent> <C-d> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * 2)<CR>
+nnoremap <silent> <C-u> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * -2)<CR>
+nnoremap <silent> <C-f> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * 4)<CR>
+nnoremap <silent> <C-b> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * -4)<CR>
+
+"=====================================================
 "" AirLine settings
 "=====================================================
-let g:airline_theme='badwolf'
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#formatter='unique_tail'
 let g:airline_powerline_fonts=1
@@ -138,6 +174,82 @@ autocmd VimEnter * if !argc() | NERDTree | endif  " Load NERDTree only if vim is
 nmap " :NERDTreeToggle<CR>
 
 "=====================================================
+"" NERDComment Settings 
+"=====================================================
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+
+"=====================================================
+"" DevIcon Settings
+"=====================================================
+" loading the plugin 
+let g:webdevicons_enable = 1
+
+" adding the flags to NERDTree 
+let g:webdevicons_enable_nerdtree = 1
+
+" adding to vim-airline's tabline
+let g:webdevicons_enable_airline_tabline = 1
+
+" adding to vim-airline's statusline
+let g:webdevicons_enable_airline_statusline = 1
+
+" turn on/off file node glyph decorations (not particularly useful)
+let g:WebDevIconsUnicodeDecorateFileNodes = 1
+
+" use double-width(1) or single-width(0) glyphs 
+" only manipulates padding, has no effect on terminal or set(guifont) font
+let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
+
+" whether or not to show the nerdtree brackets around flags 
+let g:webdevicons_conceal_nerdtree_brackets = 0
+
+" the amount of space to use after the glyph character (default ' ')
+let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
+
+" Force extra padding in NERDTree so that the filetype icons line up vertically
+let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1 
+
+" change the default character when no match found
+let g:WebDevIconsUnicodeDecorateFileNodesDefaultSymbol = 'ƛ'
+
+" set a byte character marker (BOM) utf-8 symbol when retrieving file encoding
+" disabled by default with no value
+let g:WebDevIconsUnicodeByteOrderMarkerDefaultSymbol = ''
+
+" enable folder/directory glyph flag (disabled by default with 0)
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+
+" enable open and close folder/directory glyph flags (disabled by default with 0)
+let g:DevIconsEnableFoldersOpenClose = 1
+
+" enable pattern matching glyphs on folder/directory (enabled by default with 1)
+let g:DevIconsEnableFolderPatternMatching = 1
+
+" enable file extension pattern matching glyphs on folder/directory (disabled by default with 0)
+let g:DevIconsEnableFolderExtensionPatternMatching = 0
+
+
+"=====================================================
 "" SnipMate settings
 "=====================================================
 let g:snippets_dir='~/.vim/vim-snippets/snippets'
@@ -147,6 +259,18 @@ let g:snippets_dir='~/.vim/vim-snippets/snippets'
 "=====================================================
 let g:riv_disable_folding=1
 
+"=====================================================
+"" Rainbow Parentheses Autoload 
+"=====================================================
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+"=====================================================
+"" Indent Guides Settings 
+"=====================================================
+set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
 "=====================================================
 "" Python settings
 "=====================================================
@@ -238,3 +362,48 @@ let g:ycm_confirm_extra_conf=0
 
 nmap <leader>g :YcmCompleter GoTo<CR>
 nmap <leader>d :YcmCompleter GoToDefinition<CR>
+
+let g:ale_sign_column_always = 0
+let g:ale_emit_conflict_warnings = 0                                                                         
+execute pathogen#infect()
+let g:airline#extensions#ale#enabled = 1
+let g:pymode_rope_lookup_project = 0
+let g:airline#extensions#tabline#enabled = 1
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+imap <F5> <Esc>:w<CR>:!clear;python %<CR>
+
+no <down> <Nop>
+no <left> <Nop>
+no <right> <Nop>
+no <up> <Nop>
+
+ino <down> <Nop>
+ino <left> <Nop>
+ino <right> <Nop>
+ino <up> <Nop>
+
+vno <down> <Nop>
+vno <left> <Nop>
+vno <right> <Nop>
+vno <up> <Nop>
+
+python3 << EOF
+import vim
+import git
+def is_git_repo():
+	try:
+		_ = git.Repo('.', search_parent_directories=True).git_dir
+		return "1"
+	except:
+		return "0"
+vim.command("let g:pymode_rope = " + is_git_repo())
+EOF
