@@ -11,22 +11,31 @@ wrapper() {
 
 echo "${BLUE}"
 cat << "HELLO_TEXT"
-                          iiii
-                         i::::i
-                          iiii
+                                                 ..
+                                          .::::.
+                             ___________ :;;;;:`____________
+                             \_________/ ?????L \__________/
+                               |.....| ????????> :.......'
+                               |:::::| $$$$$$"`.:::::::' ,
+                              ,|:::::| $$$$"`.:::::::' .OOS.
+                            ,7D|;;;;;| $$"`.;;;;;;;' .OOO888S.
+                          .GDDD|;;;;;| ?`.;;;;;;;' .OO8DDDDDNNS.
+                           'DDO|IIIII| .7IIIII7' .DDDDDDDDNNNF`
+                             'D|IIIIII7IIIII7' .DDDDDDDDNNNF`
+                               |EEEEEEEEEE7' .DDDDDDDNNNNF`
+                               |EEEEEEEEZ' .DDDDDDDDNNNF`
+                               |888888Z' .DDDDDDDDNNNF`
+                               |8888Z' ,DDDDDDDNNNNF`
+                               |88Z'    "DNNNNNNN"
+                               '"'        "MMMM"
+                                            ""
 
-vvvvvvv           vvvvvvviiiiiii    mmmmmmm    mmmmmmm   rrrrr   rrrrrrrrr       cccccccccccccccc
- v:::::v         v:::::v i:::::i  mm:::::::m  m:::::::mm r::::rrr:::::::::r    cc:::::::::::::::c
-  v:::::v       v:::::v   i::::i m::::::::::mm::::::::::mr:::::::::::::::::r  c:::::::::::::::::c
-   v:::::v     v:::::v    i::::i m::::::::::::::::::::::mrr::::::rrrrr::::::rc:::::::cccccc:::::c
-    v:::::v   v:::::v     i::::i m:::::mmm::::::mmm:::::m r:::::r     r:::::rc::::::c     ccccccc
-     v:::::v v:::::v      i::::i m::::m   m::::m   m::::m r:::::r     rrrrrrrc:::::c
-      v:::::v:::::v       i::::i m::::m   m::::m   m::::m r:::::r            c:::::c
-       v:::::::::v        i::::i m::::m   m::::m   m::::m r:::::r            c::::::c     ccccccc
-        v:::::::v        i::::::im::::m   m::::m   m::::m r:::::r            c:::::::cccccc:::::c
-         v:::::v         i::::::im::::m   m::::m   m::::m r:::::r             c:::::::::::::::::c
-          v:::v          i::::::im::::m   m::::m   m::::m r:::::r              cc:::::::::::::::c
-           vvv           iiiiiiiimmmmmm   mmmmmm   mmmmmm rrrrrrr                cccccccccccccccc
+    ___    ____                                            __   _         _    ________  ___
+   /   |  / / /  __  ______  __  __   ____  ___  ___  ____/ /  (_)____   | |  / /  _/  |/  /
+  / /| | / / /  / / / / __ \/ / / /  / __ \/ _ \/ _ \/ __  /  / / ___/   | | / // // /|_/ /
+ / ___ |/ / /  / /_/ / /_/ / /_/ /  / / / /  __/  __/ /_/ /  / (__  )    | |/ // // /  / /
+/_/  |_/_/_/   \__, /\____/\__,_/  /_/ /_/\___/\___/\__,_/  /_/____/     |___/___/_/  /_/
+/____/
 HELLO_TEXT
 echo "${NORMAL}"
 
@@ -72,13 +81,15 @@ echo "${NORMAL}"
   if [ ! -d "$VIM/bundle/Vundle.vim" ]; then
       printf "${BLUE}%s${NORMAL}\n" "Installing Vundle..."
       env git clone --depth=1 $VUNDLE_HTTPS "$VIM/bundle/Vundle.vim"
-  fi
+      git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+ fi
 
   if [ ! -f $VIM/colors/wombat256mod.vim ]; then
       if [ ! -d $VIM/colors/ ]; then
           mkdir -p $VIM/colors
       fi
       wget 'http://www.vim.org/scripts/download_script.php?src_id=13400' -O $VIM/colors/wombat256mod.vim
+      
   fi
 
   printf "${GREEN}%s${NORMAL}\n" "Vimrc has been configured ;)"
