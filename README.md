@@ -4,6 +4,23 @@
 
 ![screenshot](https://i.imgur.com/IRFUAWk.png)
 
+Table of contents
+=================
+
+  * [Getting Started](#getting-started)
+  * [Plugins](#plugins)
+    * [Python](#python)
+    * [Code + Project Navigation](#code-and-project-navigation)
+    * [Snippets](#snippets)
+    * [Extra](#extra)
+  * [Key Bindings](#key-bindings)
+    * [Python](#python)
+    * [Switching Between Buffers](#switching-between-buffers)
+    * [Toggle Relative Numbering](#toggle-relative-numbering)
+    * [Comfortable Motion Scrolling](#comfortable-motion-scrolling)
+    * [NerdTree Toggle](#nerdtree-toggle)
+    * [Disable Arrow Keys](#disable-arrow-keys)
+  
 ## Getting Started
 
 A script shell will get a copy of the vimrc up and running on your local machine for testing purposes:
@@ -46,7 +63,7 @@ Alternatively:
      ~/.vim/
     ```
 
-### Code + Project Navigation
+### Code and Project Navigation
 * [NerdTree](https://github.com/scrooloose/nerdtree) - Project and File navigation
 * [Tagbar](https://github.com/majutsushi/tagbar) - Class outline
 * [CtrlSpace](https://github.com/vim-ctrlspace/vim-ctrlspace) - Bookmarks/Workspaces/Fuzzy Search/ File management
