@@ -1,6 +1,6 @@
-# Vim Python IDE
+![VIM Logo](https://i.imgur.com/p7XgLxK.png)
 
-A modern VIM IDE for Python
+# 
 
 ![screenshot](https://i.imgur.com/IRFUAWk.png)
 
