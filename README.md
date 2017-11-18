@@ -8,6 +8,9 @@ Table of contents
 =================
 
   * [Getting Started](#getting-started)
+    * [Bash](#bash)
+    * [Fish](#fish)
+    * [Compile YCM](#compile-ycm)
   * [Plugins](#plugins)
     * [Python](#python)
     * [Code + Project Navigation](#code-and-project-navigation)
@@ -25,13 +28,13 @@ Table of contents
 
 A script shell will get a copy of the vimrc up and running on your local machine for testing purposes:
 ### Bash 
- *  ```
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/jarolrod/vim-python-ide/master/setup.sh)"
-    ```
+```
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/jarolrod/vim-python-ide/master/setup.sh)"
+```
 ### Fish
- *  ```
-    curl -fsSL https://raw.githubusercontent.com/jarolrod/vim-python-ide/master/setup.sh | sh       
-    ```
+```
+curl -fsSL https://raw.githubusercontent.com/jarolrod/vim-python-ide/master/setup.sh | sh       
+```
 ### Compile YCM
  * The YouCompleteMe Plugin must be compiled before use:
    * Navigate to the YouCompleteMe Folder which is found in:
@@ -39,9 +42,9 @@ A script shell will get a copy of the vimrc up and running on your local machine
      ~/.vim/bundle/YouCompleteMe/
      ```
     * Next execute the following command:
-     ```
-     install.py --clang-completer
-     ```
+      ```
+      install.py --clang-completer
+      ```
 
 Alternatively:
 * Cherry pick the parts you like from my vimrc and add it to yours
