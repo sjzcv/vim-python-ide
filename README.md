@@ -1,4 +1,4 @@
-![VIM Logo](https://i.imgur.com/p7XgLxK.png)
+![VIM Logo](https://i.imgur.com/K1z5WHQ.jpg)
 
 # 
 
