@@ -6,7 +6,7 @@ wrapper() {
   BLUE="\033[0;36m"
   NORMAL="\033[0m"
 
-  REPO_HTTPS="https://github.com/jarolrod/python-vim-ide.git"
+  REPO_HTTPS="https://github.com/jarolrod/vim-python-ide.git"
   VUNDLE_HTTPS="https://github.com/VundleVim/Vundle.vim.git"
 
 echo "${BLUE}"
