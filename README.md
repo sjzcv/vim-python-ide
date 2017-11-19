@@ -11,6 +11,7 @@ Table of contents
     * [Bash](#bash)
     * [Fish](#fish)
     * [Compile YCM](#compile-ycm)
+    * [Base16](#base16-optional)
   * [Plugins](#plugins)
     * [Python](#python)
     * [Code + Project Navigation](#code-and-project-navigation)
@@ -39,13 +40,39 @@ curl -fsSL https://raw.githubusercontent.com/jarolrod/vim-python-ide/master/setu
  * The YouCompleteMe Plugin must be compiled before use:
    * Navigate to the YouCompleteMe Folder which is found in:
      ```
-     ~/.vim/bundle/YouCompleteMe/
+     cd .vim/bundle/YouCompleteMe/
      ```
-    * Next execute the following command:
-      ```
-      install.py --clang-completer
-      ```
-
+   * Next execute the following command:
+     ```
+     ./install.sh --clang-completer --system-libclang    
+     ```
+### Base16 (Optional)
+Base16 is used to theme vim, it can also theme your terminal. Follow these steps to install, note that this part is optional:
+ * Installing Base16
+   Curl the base16 shell
+   ```
+   git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+   ```
+   * Add the following to your shell config (Themes terminal + vim):
+     * FBASH + ZSH
+       ```
+       BASE16_SHELL=$HOME/.config/base16-shell/
+       [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+       ```
+     * Fish
+       ```
+       # Base16 Shell
+       if status --is-interactive
+           eval sh $HOME/.config/base16-shell/scripts/base16-default-dark.sh
+       end
+       ```
+   * Add the following to your vimrc (Only theme vim):
+     ```
+     if filereadable(expand("~/.vimrc_background"))
+       let base16colorspace=256
+       source ~/.vimrc_background
+     endif
+     ```
 Alternatively:
 * Cherry pick the parts you like from my vimrc and add it to yours
 
