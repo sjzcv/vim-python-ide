@@ -13,6 +13,7 @@ Table of contents
     * [Compile YCM](#compile-ycm)
     * [Base16](#base16-optional)
     * [DevIcons](#devicons-optional)
+    * [Manual Install](#alternatively)
   * [Plugins](#plugins)
     * [Python](#python)
     * [Code + Project Navigation](#code-and-project-navigation)
@@ -50,7 +51,6 @@ curl -fsSL https://raw.githubusercontent.com/jarolrod/vim-python-ide/master/setu
 ### Base16 (Optional)
 Base16 is used to theme vim, it can also theme your terminal. Follow these steps to install:
 * Installing Base16
-   Curl the base16 shell
    ```
    git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
    ```
@@ -93,7 +93,7 @@ This plugin is used to show file icons in NerdTree and requires additional steps
     let g:airline_powerline_fonts = 1
 * If you dont want this feature simply remove this plugin from your vimrc and execute :PluginUpdate in vim, for proper removal delete the base16 plugin folder
 
-Alternatively:
+### Alternatively:
 * Cherry pick the parts you like from my vimrc and add it to yours
 
 ## Plugins
