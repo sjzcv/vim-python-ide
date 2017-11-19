@@ -2,7 +2,7 @@
 
 # 
 
-![screenshot](https://i.imgur.com/IRFUAWk.png)
+![screenshot](https://i.imgur.com/yhS08GB.png)
 
 Table of contents
 =================
@@ -12,6 +12,7 @@ Table of contents
     * [Fish](#fish)
     * [Compile YCM](#compile-ycm)
     * [Base16](#base16-optional)
+    * [DevIcons](#devicons-optional)
   * [Plugins](#plugins)
     * [Python](#python)
     * [Code + Project Navigation](#code-and-project-navigation)
@@ -47,8 +48,8 @@ curl -fsSL https://raw.githubusercontent.com/jarolrod/vim-python-ide/master/setu
      ./install.sh --clang-completer --system-libclang    
      ```
 ### Base16 (Optional)
-Base16 is used to theme vim, it can also theme your terminal. Follow these steps to install, note that this part is optional:
- * Installing Base16
+Base16 is used to theme vim, it can also theme your terminal. Follow these steps to install:
+* Installing Base16
    Curl the base16 shell
    ```
    git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
@@ -73,6 +74,25 @@ Base16 is used to theme vim, it can also theme your terminal. Follow these steps
        source ~/.vimrc_background
      endif
      ```
+* If you dont want this feature simply remove this plugin from your vimrc and execute :PluginUpdate in vim, for proper removal delete the devicon plugin folder 
+### DevIcons (Optional)
+This plugin is used to show file icons in NerdTree and requires additional steps to install:
+* Must install a patched font that contains required glyphs: 
+    * [Arch Linux](https://aur.archlinux.org/packages/nerd-fonts-complete/)
+    * [Everyone Else](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts)
+  * Set vim encoding to UTF-8
+    ```
+    set encoding=utf8
+    ```
+  * Set vim font to NerdFont
+    ```
+    set guifont=<FONT_NAME> <FONT_SIZE>
+    ```
+  * Add glyphs to Airline
+    ```
+    let g:airline_powerline_fonts = 1
+* If you dont want this feature simply remove this plugin from your vimrc and execute :PluginUpdate in vim, for proper removal delete the base16 plugin folder
+
 Alternatively:
 * Cherry pick the parts you like from my vimrc and add it to yours
 
@@ -98,14 +118,7 @@ Alternatively:
 * [Syntastic](https://github.com/vim-syntastic/syntastic) - Syntax
 * [Python Combined](https://github.com/mitsuhiko/vim-python-combined) - Extra handling
 * [YouCompleteMe](https://github.com/Valloric/YouCompleteMe) - Code auto-completion
-  * Navigate to bundle folder and execute command:
-     ```
-     ~/.vim/bundle/YouCompleteMe/install.py --clang-completer
-     ```
-  * Make sure to add the ycm_extra_conf.py file to:
-    ```
-     ~/.vim/
-    ```
+  * [Compile YCM](#compile-ycm)
 
 ### Code and Project Navigation
 * [NerdTree](https://github.com/scrooloose/nerdtree) - Project and File navigation
@@ -137,47 +150,10 @@ Alternatively:
 * [Vim-Wiki](https://github.com/vimwiki/vimwiki) - Personal Vim wiki
 * [Vimagit](https://github.com/jreybert/vimagit) - Git operations from buffer
 * [Base16](https://github.com/chriskempson/base16-vim) - Base16 Themes
-  * Must install the base16 shell with the following:
-    ```
-    git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
-    ```
-  * Add the following to your shell config (Themes terminal + vim):
-    * FBASH + ZSH
-      ```
-       BASE16_SHELL=$HOME/.config/base16-shell/
-       [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-      ```
-    * Fish
-      ```
-      # Base16 Shell
-      if status --is-interactive
-          eval sh $HOME/.config/base16-shell/scripts/base16-default-dark.sh
-      end
-      ```
-  * Add the following to your vimrc (Only theme vim):
-     ```
-     if filereadable(expand("~/.vimrc_background"))
-       let base16colorspace=256
-       source ~/.vimrc_background
-     endif
-     ```
+  * [Base16 Installation](#base16-optional)
       
 * [Dev Icons](https://github.com/ryanoasis/vim-devicons) - File icons in NerdTree
-  * Must install a patched font that contains required glyphs: 
-    * [Arch Linux](https://aur.archlinux.org/packages/nerd-fonts-complete/)
-    * [Everyone Else](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts)
-  * Set vim encoding to UTF-8
-    ```
-    set encoding=utf8
-    ```
-  * Set vim font to NerdFont
-    ```
-    set guifont=<FONT_NAME> <FONT_SIZE>
-    ```
-  * Add glyphs to Airline
-    ```
-    let g:airline_powerline_fonts = 1
-    ```
+  * [DevIcons Installation](#devicons-optional)
 * [TMUXLine](https://github.com/edkolev/tmuxline.vim) - Applies AirlineTheme to Tmux
 
 ## Key-Bindings
