@@ -55,7 +55,7 @@ Base16 is used to theme vim, it can also theme your terminal. Follow these steps
    git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
    ```
    * Add the following to your shell config (Themes terminal + vim):
-     * FBASH + ZSH
+     * Bash + ZSH
        ```
        BASE16_SHELL=$HOME/.config/base16-shell/
        [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
@@ -74,7 +74,7 @@ Base16 is used to theme vim, it can also theme your terminal. Follow these steps
        source ~/.vimrc_background
      endif
      ```
-* If you dont want this feature simply remove this plugin from your vimrc and execute :PluginUpdate in vim, for proper removal delete the devicon plugin folder 
+* If you dont want this feature simply remove this plugin from your vimrc and execute :PluginUpdate in vim, for proper removal delete the base16 plugin folder 
 ### DevIcons (Optional)
 This plugin is used to show file icons in NerdTree and requires additional steps to install:
 * Must install a patched font that contains required glyphs: 
@@ -91,7 +91,7 @@ This plugin is used to show file icons in NerdTree and requires additional steps
   * Add glyphs to Airline
     ```
     let g:airline_powerline_fonts = 1
-* If you dont want this feature simply remove this plugin from your vimrc and execute :PluginUpdate in vim, for proper removal delete the base16 plugin folder
+* If you dont want this feature simply remove this plugin from your vimrc and execute :PluginUpdate in vim, for proper removal delete the devicons plugin folder
 
 ### Alternatively:
 * Cherry pick the parts you like from my vimrc and add it to yours
