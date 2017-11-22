@@ -46,23 +46,24 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'                " Project and file navigation
 Plugin 'Xuyuanp/nerdtree-git-plugin'        " NerdTree git functionality
 Plugin 'majutsushi/tagbar'                  " Class/module browser
-Plugin 'vim-ctrlspace/vim-ctrlspace'
-Plugin 'mileszs/ack.vim'
+Plugin 'vim-ctrlspace/vim-ctrlspace'        " Tabs/Buffers/Fuzzy/Workspaces/Bookmarks
+Plugin 'mileszs/ack.vim'                    " Ag/Grep
 Plugin 'vim-airline/vim-airline'            " Lean & mean status/tabline for vim
 Plugin 'vim-airline/vim-airline-themes'     " Themes for airline
-Plugin 'Lokaltog/powerline'                 " Powerline fonts plugin
 Plugin 'fisadev/FixedTaskList.vim'          " Pending tasks list
-Plugin 'rosenfeld/conque-term'              " Consoles as buffers
 Plugin 'yuttie/comfortable-motion.vim'      " Smooth scrolling
 Plugin 'MattesGroeger/vim-bookmarks'        " Bookmarks
 Plugin 'thaerkh/vim-indentguides'           " Visual representation of indents
+Plugin 'neomake/neomake'                    " Asynchronous Linting and Make Framework
+Plugin 'Shougo/deoplete.nvim'               " Asynchronous Completion
+Plugin 'roxma/nvim-yarp'                    " Deoplete Dependency #1
+Plugin 'roxma/vim-hug-neovim-rpc'           " Deoplete Dependency #2
 
 "-------------------=== Other ===-------------------------------
 Plugin 'tpope/vim-surround'                 " Parentheses, brackets, quotes, XML tags, and more
 Plugin 'flazz/vim-colorschemes'             " Colorschemes
 Plugin 'vimwiki/vimwiki'                    " Personal Wiki
-Plugin 'jreybert/vimagit'
-Plugin 'edkolev/tmuxline.vim'
+Plugin 'jreybert/vimagit'                   " Git Operations
 Plugin 'kien/rainbow_parentheses.vim'       " Rainbow Parentheses
 Plugin 'chriskempson/base16-vim'            " Base 16 colors
 Plugin 'ryanoasis/vim-devicons'             " Dev Icons
@@ -74,16 +75,12 @@ Plugin 'tomtom/tlib_vim'                    " dependencies #2
 Plugin 'honza/vim-snippets'                 " snippets repo
 
 "-------------------=== Languages support ===-------------------
-Plugin 'tpope/vim-commentary'               " Comment stuff out
 Plugin 'scrooloose/nerdcommenter'           " Easy code documentation
 Plugin 'mitsuhiko/vim-sparkup'              " Sparkup(XML/jinja/htlm-django/etc.) support
-Plugin 'Rykka/riv.vim'                      " ReStructuredText plugin
-Plugin 'Valloric/YouCompleteMe'             " Autocomplete plugin
 Plugin 'w0rp/ale'
 
 "-------------------=== Python  ===-----------------------------
 Plugin 'klen/python-mode'                   " Python mode (docs, refactor, lints...)
-Plugin 'scrooloose/syntastic'               " Syntax checking plugin for Vim
 Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'mitsuhiko/vim-python-combined'
 Plugin 'mitsuhiko/vim-jinja'
@@ -109,7 +106,8 @@ colorscheme base16-default-dark             " set vim colorscheme
 let g:airline_theme='base16_spacemacs'             " set airline theme
 syntax enable                               " enable syntax highlighting
 
-
+set pyxversion=0
+let g:loaded_python_provider = 1
 set shell=/bin/bash
 set number                                  " show line numbers
 set ruler
@@ -150,10 +148,16 @@ nmap <F10> :bnext<CR>
 nmap <silent> <leader>q :SyntasticCheck # <CR> :bp <BAR> bd #<CR>
 
 "=====================================================
-"" Workspace Settings 
+"" Neomake Settings 
 "=====================================================
-nnoremap <Fc> :ToggleWorkspace<CR>
-let g:workspace_autosave_always = 1
+call neomake#configure#automake('w')
+let g:neomake_open_list = 2
+
+"=====================================================
+"" Deoplete  Settings 
+"=====================================================
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
 
 "=====================================================
 "" Relative Numbering 
@@ -283,11 +287,6 @@ let g:DevIconsEnableFolderExtensionPatternMatching = 0
 let g:snippets_dir='~/.vim/vim-snippets/snippets'
 
 "=====================================================
-"" Riv.vim settings
-"=====================================================
-let g:riv_disable_folding=1
-
-"=====================================================
 "" Rainbow Parentheses Autoload 
 "=====================================================
 au VimEnter * RainbowParenthesesToggle
@@ -305,7 +304,6 @@ set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
 
 " python executables for different plugins
 let g:pymode_python='python'
-let g:syntastic_python_python_exec='python'
 
 " rope
 let g:pymode_rope=0
@@ -369,42 +367,11 @@ let g:pymode_indent=1
 let g:pymode_run=1
 let g:pymode_run_bind='<F5>'
 
-" syntastic
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_enable_signs=1
-let g:syntastic_check_on_wq=0
-let g:syntastic_aggregate_errors=1
-let g:syntastic_loc_list_height=5
-let g:syntastic_error_symbol='X'
-let g:syntastic_style_error_symbol='X'
-let g:syntastic_warning_symbol='x'
-let g:syntastic_style_warning_symbol='x'
-let g:syntastic_python_checkers=['flake8', 'pydocstyle', 'python']
-
-" YouCompleteMe
-set completeopt-=preview
-
-let g:ycm_global_ycm_extra_conf='~/.vim/ycm_extra_conf.py'
-let g:ycm_confirm_extra_conf=0
-
-nmap <leader>g :YcmCompleter GoTo<CR>
-nmap <leader>d :YcmCompleter GoToDefinition<CR>
-
 let g:ale_sign_column_always = 0
 let g:ale_emit_conflict_warnings = 0                                                                         
 let g:airline#extensions#ale#enabled = 1
 let g:pymode_rope_lookup_project = 0
 let g:airline#extensions#tabline#enabled = 1
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 
 imap <F5> <Esc>:w<CR>:!clear;python %<CR>
 
