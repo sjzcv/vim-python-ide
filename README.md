@@ -1,6 +1,6 @@
 ![VIM Logo](https://i.imgur.com/wQgLi2F.jpg)
 
-![screenshot](https://i.imgur.com/yhS08GB.png)
+![screenshot](https://i.imgur.com/KoKH5aA.png)
 
 Table of contents
 =================
