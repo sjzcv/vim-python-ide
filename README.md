@@ -1,7 +1,5 @@
 ![VIM Logo](https://i.imgur.com/ckShlfO.jpg)
 
-# 
-
 ![screenshot](https://i.imgur.com/yhS08GB.png)
 
 Table of contents
@@ -10,7 +8,9 @@ Table of contents
   * [Getting Started](#getting-started)
     * [Bash](#bash)
     * [Fish](#fish)
-    * [Compile YCM](#compile-ycm)
+    * [Neovim](#neovim)
+    * [Deoplete](#deoplete)
+    * [Neomake](#neomake)
     * [Base16](#base16-optional)
     * [DevIcons](#devicons-optional)
     * [Manual Install](#alternatively)
@@ -38,16 +38,23 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/jarolrod/vim-python-ide/ma
 ```
 curl -fsSL https://raw.githubusercontent.com/jarolrod/vim-python-ide/master/setup.sh | sh       
 ```
-### Compile YCM
- * The YouCompleteMe Plugin must be compiled before use:
-   * Navigate to the YouCompleteMe Folder which is found in:
-     ```
-     cd .vim/bundle/YouCompleteMe/
-     ```
-   * Next execute the following command:
-     ```
-     ./install.sh --clang-completer --system-libclang    
-     ```
+### Neovim
+* Dependency for Deoplete and NeoMake
+* Installation:
+ * ```
+   pip3 install neovim
+   ```
+### Deoplete
+ * An Asynchronous Completion Engine for Vim
+ * Requirements:
+  * Python 3
+  * Vim 8+
+  * [Neovim](#neovim) (to be used as a server)
+  
+### Neomake
+ * Asynchronouse Linting Engine for Vim 
+ * Same requirements as [Deoplete](#deoplete)
+ 
 ### Base16 (Optional)
 Base16 is used to theme vim, it can also theme your terminal. Follow these steps to install:
 * Installing Base16
@@ -75,6 +82,7 @@ Base16 is used to theme vim, it can also theme your terminal. Follow these steps
      endif
      ```
 * If you dont want this feature simply remove this plugin from your vimrc and execute :PluginUpdate in vim, for proper removal delete the base16 plugin folder 
+
 ### DevIcons (Optional)
 This plugin is used to show file icons in NerdTree and requires additional steps to install:
 * Must install a patched font that contains required glyphs: 
@@ -115,10 +123,10 @@ This plugin is used to show file icons in NerdTree and requires additional steps
     ```
 * [PEP 8 Indentation](https://github.com/Vimjas/vim-python-pep8-indent) - Python Indentation
 * [Jinja](https://github.com/lepture/vim-jinja) - Syntax and Indentation
-* [Syntastic](https://github.com/vim-syntastic/syntastic) - Syntax
+* [Neomake](https://github.com/neomake/neomake) - An Asynchronous version of Syntastic
+* [Deoplete](https://github.com/Shougo/deoplete.nvim) - Asynchronous Compeletion Engine
 * [Python Combined](https://github.com/mitsuhiko/vim-python-combined) - Extra handling
-* [YouCompleteMe](https://github.com/Valloric/YouCompleteMe) - Code auto-completion
-  * [Compile YCM](#compile-ycm)
+
 
 ### Code and Project Navigation
 * [NerdTree](https://github.com/scrooloose/nerdtree) - Project and File navigation
@@ -128,7 +136,6 @@ This plugin is used to show file icons in NerdTree and requires additional steps
 * [Airline](https://github.com/vim-airline/vim-airline) - Tabline
 * [Powerline](https://github.com/powerline/powerline) - Used for fonts
 * [Fixed Task List](https://github.com/fisadev/FixedTaskList.vim) - Pending tasks
-* [Conque Term](https://github.com/rosenfeld/conque-term) - Console as buffer
 * [Comfortable Motion](https://github.com/yuttie/comfortable-motion.vim) - Physics based scrolling
 * [Bookmarks](https://github.com/MattesGroeger/vim-bookmarks) - Bookmark code
 * [Indent Guides](https://github.com/nathanaelkane/vim-indent-guides) - Visual repesentation of indents
@@ -137,7 +144,6 @@ This plugin is used to show file icons in NerdTree and requires additional steps
 * [Snippets](https://github.com/honza/vim-snippets) - Snippets
 * [Snip-Mate](https://github.com/garbas/vim-snipmate) - Snippet Manager
 * [NerdCommenter](https://github.com/scrooloose/nerdcommenter) - Easy code documentation
-* [Commentary](https://github.com/tpope/vim-commentary) - Comment stuff out
 * [Utility Functions](https://github.com/tomtom/tlib_vim) - Add-on
 * [Add-on](https://github.com/MarcWeber/vim-addon-mw-utils) - interpret file by function
 
@@ -151,10 +157,8 @@ This plugin is used to show file icons in NerdTree and requires additional steps
 * [Vimagit](https://github.com/jreybert/vimagit) - Git operations from buffer
 * [Base16](https://github.com/chriskempson/base16-vim) - Base16 Themes
   * [Base16 Installation](#base16-optional)
-      
 * [Dev Icons](https://github.com/ryanoasis/vim-devicons) - File icons in NerdTree
   * [DevIcons Installation](#devicons-optional)
-* [TMUXLine](https://github.com/edkolev/tmuxline.vim) - Applies AirlineTheme to Tmux
 
 ## Key-Bindings
 ### Python 
