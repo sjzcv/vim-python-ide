@@ -52,7 +52,7 @@ curl -fsSL https://raw.githubusercontent.com/jarolrod/vim-python-ide/master/setu
   * [Neovim](#neovim) (to be used as a server)
   
 ### Neomake
- * Asynchronouse Linting Engine for Vim 
+ * Asynchronous Linting Engine for Vim 
  * Same requirements as [Deoplete](#deoplete)
  
 ### Base16 (Optional)
