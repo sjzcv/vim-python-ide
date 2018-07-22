@@ -6,7 +6,7 @@ wrapper() {
   BLUE="\033[0;36m"
   NORMAL="\033[0m"
 
-  REPO_HTTPS="https://github.com/jarolrod/vim-python-ide.git"
+  REPO_HTTPS="https://github.com/sjzcv/vim-python-ide.git"
   VUNDLE_HTTPS="https://github.com/VundleVim/Vundle.vim.git"
 
 echo "${BLUE}"
@@ -81,16 +81,7 @@ echo "${NORMAL}"
   if [ ! -d "$VIM/bundle/Vundle.vim" ]; then
       printf "${BLUE}%s${NORMAL}\n" "Installing Vundle..."
       env git clone --depth=1 $VUNDLE_HTTPS "$VIM/bundle/Vundle.vim"
-      git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
  fi
-
-  if [ ! -f $VIM/colors/wombat256mod.vim ]; then
-      if [ ! -d $VIM/colors/ ]; then
-          mkdir -p $VIM/colors
-      fi
-      wget 'http://www.vim.org/scripts/download_script.php?src_id=13400' -O $VIM/colors/wombat256mod.vim
-      
-  fi
 
   printf "${GREEN}%s${NORMAL}\n" "Vimrc has been configured ;)"
   printf "${YELLOW}%s${NORMAL}\n" "Do not worry about error messages. When it occurs just press enter and wait till all plugins are installed."
