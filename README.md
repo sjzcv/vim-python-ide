@@ -36,7 +36,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/sjzcv/vim-python-ide/maste
 ```
 ### Fish
 ```
-curl -fsSL https://raw.githubusercontent.com/jarolrod/vim-python-ide/master/setup.sh | sh       
+curl -fsSL https://raw.githubusercontent.com/sjzcv/vim-python-ide/master/setup.sh | sh       
 ```
 ### Neovim
 * Dependency for Deoplete and NeoMake
