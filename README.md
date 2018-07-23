@@ -32,7 +32,7 @@ Table of contents
 A script shell will get a copy of the vimrc up and running on your local machine for testing purposes:
 ### Bash 
 ```
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/jarolrod/vim-python-ide/master/setup.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/sjzcv/vim-python-ide/master/setup.sh)"
 ```
 ### Fish
 ```
